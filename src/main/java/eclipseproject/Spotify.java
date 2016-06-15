@@ -10,17 +10,18 @@ public class Spotify {
 	String incorrectPassword = "incorrectPassword" ;
 	String correctPassword = "freeaccount";
 	Screen s = new Screen(); 
-	Pattern password = new Pattern("password.png");
-	Pattern loginImage = new Pattern("LoginImage.png");
-	Pattern loginError = new Pattern("loginError.png");
-	Pattern openSpotify = new Pattern("openSpotify.png");
-	Pattern openSpotifyDesk = new Pattern("SpotifyDesktop.png");
-	Pattern incorrectPasswordPNG = new Pattern("incorrectPassword.png");
-	Pattern userLoginSuccessful = new Pattern ("userLoginSuccessful.png");
-	Pattern close = new Pattern("close.png");
-	Pattern menu = new Pattern ("menu.png");
-	Pattern logOut = new Pattern ("logOut.png");
-	Pattern search = new Pattern ("search.png");
+	Pattern password = new Pattern("src/main/resources/password.png");
+	Pattern loginImage = new Pattern("src/main/resources/LoginImage.png");
+	Pattern login = new Pattern ("src/main/resources/login.png");
+	Pattern loginError = new Pattern("src/main/resources/loginError.png");
+	Pattern openSpotify = new Pattern("src/main/resources/openSpotify.png");
+	Pattern openSpotifyDesk = new Pattern("src/main/resources/SpotifyDesktop.png");
+	Pattern incorrectPasswordPNG = new Pattern("src/main/resources/incorrectPassword.png");
+	Pattern userLoginSuccessful = new Pattern ("src/main/resources/userLoginSuccessful.png");
+	Pattern close = new Pattern("src/main/resources/close.png");
+	Pattern menu = new Pattern ("src/main/resources/menu.png");
+	Pattern logOut = new Pattern ("src/main/resources/logOut.png");
+	Pattern search = new Pattern ("src/main/resources/search.png");
 	//  no pattern needed for Username bc the system will autogenerate the last given username at app opening
 	
 	
@@ -61,7 +62,7 @@ public class Spotify {
 		public void IncorrectLogin()throws Exception{
 			
 			System.out.println("spotify opening");	
-			s.wait(loginImage, 10); //Waits a max 10 secs to verify that you land on the login page via image
+			s.wait(loginImage, 30); //Waits a max 30 secs to verify that you land on the login page via image
 			s.find(password);
 			s.type(password, incorrectPassword);
 			s.type(Key.TAB, KeyModifier.SHIFT);
@@ -78,7 +79,7 @@ public class Spotify {
 			
 		public void validLogin() throws Exception {
 
-			s.wait(password, 10);
+			s.wait(password, 30);
 			s.type(password, correctPassword);
 			s.type(Key.TAB, KeyModifier.SHIFT);
 			s.type(Key.BACKSPACE);
@@ -101,4 +102,6 @@ public class Spotify {
 			s.wheel("m83scroll.png", WHEEL_DOWN, 4);
 			
 		}
+		
+		
 }
