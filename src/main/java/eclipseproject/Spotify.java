@@ -36,7 +36,7 @@ public class Spotify {
 	Pattern settings = new Pattern ("src/main/resources/settings.png");
 	Pattern backToLogin = new Pattern ("src/main/resources/backToLogin.png");
 	Pattern spoon = new Pattern ("src/main/resources/spoon.png");
-	Pattern playSong = new Pattern ("src/main/resources/playSong.png").similar((float) 0.99);
+	Pattern playSong = new Pattern ("src/main/resources/playSong.png");
 	//  no pattern needed for Username bc the system will autogenerate the last given username at app opening
 	
 	
