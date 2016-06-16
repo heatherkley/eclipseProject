@@ -14,15 +14,23 @@ NOTE: the JRE System Library may need to be deleted and readded through the conf
 Assumptions/Restrictions:
 
 Assumption: The GUI components are stable and not frequently changing.
+
 Assumption: Logs into the application successfully.
+
 Assumption: The test will be run using the most current version that contains the most up-to-date GUI (1.0.29.92).
+
 Assumption: Spotify will have access to communicate on network (windows firewall).
+
 Assumption: The test will fail if any popups interfere while running.
 
 Scenarios Covered:
 
 a. Valid Login
+
 b. Invalid Login
+
 c. Search for Artist
+
 d. Search for Song and Play the song
+
 e. Create new Radio Station
