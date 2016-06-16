@@ -33,6 +33,10 @@ public class Spotify {
 	Pattern searchRadio = new Pattern ("src/main/resources/searchRadio.png");
 	Pattern deadmau5 = new Pattern ("src/main/resources/deadmau5.png");
 	Pattern artistStation = new Pattern ("src/main/resources/artistRadioDeadmau5.png");
+	Pattern settings = new Pattern ("src/main/resources/settings.png");
+	Pattern backToLogin = new Pattern ("src/main/resources/backToLogin.png");
+	Pattern spoon = new Pattern ("src/main/resources/spoon.png");
+	Pattern playSong = new Pattern ("src/main/resources/playSong.png").similar((float) 0.99);
 	//  no pattern needed for Username bc the system will autogenerate the last given username at app opening
 	
 	
@@ -42,20 +46,18 @@ public class Spotify {
 		
 		public void openApp() throws Exception {
 		
-			if (s.exists(openMacSpotify) !=null)
+			if (s.exists(openMacSpotify, 5) !=null)
 				s.doubleClick(openMacSpotify);
 			else if(s.exists(openWinSpotify) !=null)
-				s.doubleClick(openWinSpotify);
+				s.click(openWinSpotify);
 			System.out.println("Spotify Opening");
 		}
 	
 		public void closeApp() throws Exception {
-			if (s.exists(close) !=null)
-				s.click(close);	
-			else if(s.exists(macClose) !=null)
-				s.click(macClose);
-			System.out.println("Success: Application closed");
-			
+			if (s.exists(close) !=null){
+				s.click(close);	}
+		
+			System.out.println("Success: Application closed");	
 		}
 		
 		public void logout() throws Exception{
@@ -83,6 +85,10 @@ public class Spotify {
 			}else {
 				throw new Exception("Login error message should appear: password is invalid");
 			}
+			s.click(settings);
+			s.exists(backToLogin, 15);
+			s.click(backToLogin); //this will reset the password txtbox
+			
 		}
 			
 		public void validLogin() throws Exception {
@@ -111,8 +117,10 @@ public class Spotify {
 		public void searchAndPlaySong() throws Exception {
 			s.exists(search, 20);
 			s.type(search, "don't you evah" + Key.ENTER);
-			Match r = s.exists(songTitle, 15);
-			s.doubleClick(r, 3);
+//			Match r = s.exists(songTitle, 15);
+//			s.doubleClick(r, 3);
+			s.exists(playSong, 30);
+			s.doubleClick(playSong);
 			s.exists(playing, 5); //this will verify that double clicking the song title will play the song
 			Settings.MoveMouseDelay = 6;
 			s.click(playing);
@@ -125,7 +133,7 @@ public class Spotify {
 			s.click(radio);
 			s.exists(createNew, 45);
 			s.click(createNew);
-			s.exists(searchRadio, 20);
+			s.exists(searchRadio, 30);
 			s.click(searchRadio);
 			s.type(searchRadio, "deadmau5");
 			s.exists(deadmau5, 20);
